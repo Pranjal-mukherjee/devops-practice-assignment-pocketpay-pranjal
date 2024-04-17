@@ -1,4 +1,4 @@
-FROM maven:3.8.4-openjdk-11-slim AS MAVEN_JAR
+FROM maven:3.8.3-openjdk-17 AS MAVEN_JAR
 WORKDIR /code
 COPY . .
 RUN mvn clean package -DskipTests
