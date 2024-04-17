@@ -1,12 +1,5 @@
-FROM maven:3.8.4-openjdk-11-slim AS MAVEN_JAR
-WORKDIR /code
-COPY . .
-RUN mvn clean package -DskipTests
- 
-
-
-FROM openjdk:17-jdk-alpine
-WORKDIR /opt
-COPY --from=MAVEN_JAR /code/target/*.jar /opt/web.jar
+FROM openjdk:17-alpine
+WORKDIR /api-gateway
+COPY target/*.jar /api-gateway/app.jar
 EXPOSE 9191
-ENTRYPOINT ["java","-jar","/opt/web.jar"]
+ENTRYPOINT ["java", "-jar", "/api-gateway/app.jar"]
