@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: eureka-registry
+  name: bc117-service-registry-deployment
   labels:
     type: registry
     name: eureka
@@ -10,15 +10,15 @@ spec:
   template:
     metadata:
       labels:
-        app: eureka-service
+        app: service-registry-label
     spec:
       containers:
-      - name: service-image
-        image: ghcr.io/pranjal-mukherjee/bootcamp117-backend-transaction-service:7
+      - name: service-registry-container
+        image: ghcr.io/pranjal-mukherjee/bootcamp117-backend-service-registry:v8
         ports:
         - containerPort: 8761
       imagePullSecrets: 
       - name: ghcr-secret
   selector:
     matchLabels:
-      app: eureka-service
+      app: service-registry-label

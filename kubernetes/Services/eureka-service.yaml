@@ -7,4 +7,4 @@ spec:
   - targetPort: 8761
     port: 8761
   selector:
-    type: eureka-service
+    app: service-registry-label
